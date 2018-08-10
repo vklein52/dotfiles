@@ -1,0 +1,6 @@
+[user]
+	email = vijaygk2@illinois.edu
+	name = Vijay Klein
+[alias]
+	dad = !curl https://icanhazdadjoke.com
+	stat = status
