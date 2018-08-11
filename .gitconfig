@@ -3,7 +3,7 @@
 	name = Vijay Klein
 	email = vijaygk2@illinois.edu
 [core]
-	editor = "emacsclient -nw -a """
+	editor = vim
 [alias]
 	dad = !echo $(curl -s -H \"Accept: text/plain\" https://icanhazdadjoke.com/)
 	stat = status
