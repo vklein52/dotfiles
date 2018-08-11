@@ -2,15 +2,18 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/vklein52/.oh-my-zsh
+
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="agnoster"
+# ZSH_THEME="spaceship"
 
 # Set list of themes to load
-# Setting this var[[ -e ~/.profile ]] && emulate sh -c 'source ~/.profile'iable when ZSH_THEME=random
+# Setting this variable when ZSH_THEME=random
+
 # cause zsh load theme from this variable instead of
 # looking in ~/.oh-my-zsh/themes/
 # An empty array have no effect
@@ -66,8 +69,6 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-source $HOME/.bash_aliases
-
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -96,5 +97,9 @@ source $HOME/.bash_aliases
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # added by Anaconda3 installer
+export PATH="/anaconda3/bin:$PATH"
 
+# export DEVELOPER_EMAIL='vklein@godaddy.com'
+# export DEVELOPER_NAME='vklein'
 
+source $HOME/.bash_profile

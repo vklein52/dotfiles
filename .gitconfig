@@ -1,6 +1,12 @@
+# this is git's per-user configuration file.
 [user]
-	email = vijaygk2@illinois.edu
 	name = Vijay Klein
+	email = vijaygk2@illinois.edu
+[core]
+	editor = "emacsclient -nw -a """
 [alias]
-	dad = !curl https://icanhazdadjoke.com
+	dad = !echo $(curl -s -H \"Accept: text/plain\" https://icanhazdadjoke.com/)
 	stat = status
+[merge]
+	conflictstyle = diff3
+
