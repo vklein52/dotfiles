@@ -25,9 +25,6 @@
 (setq-default tab-width 4
 			  indent-tabs-mode nil)
 
-;; allow for comments in terminal mode with C-x /
-(global-set-key "\C-x/" 'comment-line)
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -42,10 +39,13 @@
     ("50d2919c1abf557501cf2ce0aaee7464b1aea6c86653d24081aa940e8f9059f1" "aa890cb2304e76bb016bb100945de44e0aa2000dafff5279fe0fca65d45e3e58" "b212cf89712496378a6bce4779935dc8c622869bb3944652e67052496a1ade16" default)))
  '(package-selected-packages
    (quote
-    (find-file-in-project use-package flycheck dumb-jump ivy-explorer hydra ivy company))))
+    (beacon rainbow-delimiters xkcd find-file-in-project use-package flycheck dumb-jump ivy-explorer hydra ivy company))))
 (load-theme 'wombat t)
 ;; lol this will probably break elsewhere so make sure goodwombat is shipped in the repo
 (load-theme 'goodwombat t)
+
+;; allow for comments in terminal mode with C-x /
+(global-set-key "\C-x/" 'comment-line)
 
 ;; company related section
 (add-hook 'after-init-hook 'global-company-mode)
@@ -80,7 +80,15 @@
  ;; If there is more than one, they won't work right.
  '(cursor ((t (:background "white"))))
  '(font-lock-keyword-face ((t (:foreground "purple"))))
- '(font-lock-string-face ((t (:foreground "green")))))
+ '(font-lock-string-face ((t (:foreground "green"))))
+ '(rainbow-delimiters-depth-1-face ((t (:inherit rainbow-delimiters-base-face :foreground "yellow"))))
+ '(rainbow-delimiters-depth-2-face ((t (:inherit rainbow-delimiters-base-face :foreground "magenta"))))
+ '(rainbow-delimiters-depth-3-face ((t (:inherit rainbow-delimiters-base-face :foreground "deep sky blue"))))
+ '(rainbow-delimiters-depth-4-face ((t (:inherit rainbow-delimiters-base-face :foreground "yellow green"))))
+ '(rainbow-delimiters-depth-5-face ((t (:inherit rainbow-delimiters-base-face :foreground "light coral"))))
+ '(rainbow-delimiters-depth-6-face ((t (:inherit rainbow-delimiters-base-face :foreground "thistle"))))
+ '(rainbow-delimiters-depth-7-face ((t (:inherit rainbow-delimiters-base-face :foreground "SeaGreen1"))))
+ '(rainbow-delimiters-depth-9-face ((t (:inherit rainbow-delimiters-base-face :foreground "MediumOrchid1")))))
 
 (dumb-jump-mode)
 
@@ -88,6 +96,13 @@
   :ensure t
   :init (global-flycheck-mode))
 
+;; pretty parentheses
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
+;; SUMMON THE BEACON
+(beacon-mode 1)
+
+;;TODO: add multiple cursors when youre ready
 
 (provide '.emacs)
 
