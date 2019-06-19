@@ -4,8 +4,40 @@
 
 ;;; code:
 (require 'package)
+;; todo: remove the elpa directory from git
+(setq vklein-packages '(beacon
+                 bind-key
+                 company
+                 counsel
+                 dash
+                 dumb-jump
+                 epl
+                 f
+                 find-file-in-project
+                 flycheck
+                 haskell-mode
+                 hydra
+                 ivy
+                 ivy-explorer
+                 popup
+                 pkg-info
+                 rainbow-delimiters
+                 s
+                 seq
+                 use-package
+                 xkcd
+                 ))
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
+
+;; fetch the list of packages available 
+(unless package-archive-contents
+  (package-refresh-contents))
+
+;; install the missing packages
+(dolist (package vklein-packages)
+  (unless (package-installed-p package)
+    (package-install package)))
 
 ;; enable use-package
 (eval-when-compile
@@ -91,7 +123,6 @@
  '(cursor ((t (:background "white"))))
  '(font-lock-keyword-face ((t (:foreground "purple"))))
  '(font-lock-string-face ((t (:foreground "green"))))
- 
  '(rainbow-delimiters-depth-1-face ((t (:inherit rainbow-delimiters-base-face :foreground "deep sky blue"))))
  '(rainbow-delimiters-depth-2-face ((t (:inherit rainbow-delimiters-base-face :foreground "magenta"))))
  '(rainbow-delimiters-depth-3-face ((t (:inherit rainbow-delimiters-base-face :foreground "yellow"))))
