@@ -66,9 +66,19 @@
 ;; enable copying to clipboard
 (setq select-enable-clipboard t)
 
+;; mark ring tings
+(setq set-mark-command-repeat-pop t)
+(global-set-key (kbd "C-c m") 'counsel-mark-ring)
+
+;; I like evaluating buffers!
+(global-set-key (kbd "C-c e") 'eval-buffer)
+
+
 ;; add some file extensions
 (add-to-list 'auto-mode-alist '("\\.cu\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.gdb\\'" . gdb-script-mode))
+(add-to-list 'auto-mode-alist '("\\..*sh.*\\'" . shell-script-mode))
+
 
 (setq vc-follow-symlinks t)
 
@@ -81,14 +91,20 @@
  '(cursor ((t (:background "white"))))
  '(font-lock-keyword-face ((t (:foreground "purple"))))
  '(font-lock-string-face ((t (:foreground "green"))))
- '(rainbow-delimiters-depth-1-face ((t (:inherit rainbow-delimiters-base-face :foreground "yellow"))))
+ 
+ '(rainbow-delimiters-depth-1-face ((t (:inherit rainbow-delimiters-base-face :foreground "deep sky blue"))))
  '(rainbow-delimiters-depth-2-face ((t (:inherit rainbow-delimiters-base-face :foreground "magenta"))))
- '(rainbow-delimiters-depth-3-face ((t (:inherit rainbow-delimiters-base-face :foreground "deep sky blue"))))
- '(rainbow-delimiters-depth-4-face ((t (:inherit rainbow-delimiters-base-face :foreground "yellow green"))))
- '(rainbow-delimiters-depth-5-face ((t (:inherit rainbow-delimiters-base-face :foreground "light coral"))))
+ '(rainbow-delimiters-depth-3-face ((t (:inherit rainbow-delimiters-base-face :foreground "yellow"))))
+ '(rainbow-delimiters-depth-4-face ((t (:inherit rainbow-delimiters-base-face :foreground "light coral"))))
+ '(rainbow-delimiters-depth-5-face ((t (:inherit rainbow-delimiters-base-face :foreground "SeaGreen1"))))
  '(rainbow-delimiters-depth-6-face ((t (:inherit rainbow-delimiters-base-face :foreground "thistle"))))
- '(rainbow-delimiters-depth-7-face ((t (:inherit rainbow-delimiters-base-face :foreground "SeaGreen1"))))
- '(rainbow-delimiters-depth-9-face ((t (:inherit rainbow-delimiters-base-face :foreground "MediumOrchid1")))))
+ '(rainbow-delimiters-depth-7-face ((t (:inherit rainbow-delimiters-base-face :foreground "MediumOrchid1"))))
+ '(rainbow-delimiters-depth-8-face ((t (:inherit rainbow-delimiters-base-face :foreground "yellow green")))))
+
+;; clear parens are cool too
+(setq show-paren-delay 0)
+(show-paren-mode 1)
+;; C-M-{f,b} is jumping around just so you know
 
 (dumb-jump-mode)
 
