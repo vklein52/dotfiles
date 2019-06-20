@@ -5,32 +5,32 @@
 ;;; code:
 (require 'package)
 ;; todo: remove the elpa directory from git
-(setq vklein-packages '(beacon
-                 bind-key
-                 company
-                 counsel
-                 dash
-                 dumb-jump
-                 epl
-                 f
-                 find-file-in-project
-                 flycheck
-                 haskell-mode
-                 hydra
-                 ivy
-                 ivy-explorer
-                 popup
-                 pkg-info
-                 rainbow-delimiters
-                 s
-                 seq
-                 use-package
-                 xkcd
-                 ))
+(defvar vklein-packages '(beacon
+                          bind-key
+                          company
+                          counsel
+                          dash
+                          dumb-jump
+                          epl
+                          f
+                          find-file-in-project
+                          flycheck
+                          haskell-mode
+                          hydra
+                          ivy
+                          ivy-explorer
+                          popup
+                          pkg-info
+                          rainbow-delimiters
+                          s
+                          seq
+                          use-package
+                          xkcd))
+
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
 
-;; fetch the list of packages available 
+;; fetch the list of packages available
 (unless package-archive-contents
   (package-refresh-contents))
 
@@ -51,11 +51,11 @@
 
 ;; change from gnu style to linux style for c like languages
 (setq-default c-default-style "linux"
-			  c-basic-offset 4)
+              c-basic-offset 4)
 
 ;; set default tab width to 4 and disable tabs
 (setq-default tab-width 4
-			  indent-tabs-mode nil)
+              indent-tabs-mode nil)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -109,7 +109,8 @@
 ;; add some file extensions
 (add-to-list 'auto-mode-alist '("\\.cu\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.gdb\\'" . gdb-script-mode))
-(add-to-list 'auto-mode-alist '("\\..*sh.*\\'" . shell-script-mode))
+;; when in doubt, escape more characters lol
+(add-to-list 'auto-mode-alist '("\\.\\(ba\\|z\\)sh\\(rc\\|_\\(profile\\|aliases\\)\\)\\'" . shell-script-mode))
 
 
 (setq vc-follow-symlinks t)
