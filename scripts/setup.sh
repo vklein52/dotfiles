@@ -2,9 +2,12 @@
 
 function clone-repo () {
     pushd ~
+    mkdir .cfg
+    pushd .cfg
     git init
     git remote add origin https://github.com/vklein52/dotfiles.git 
-    git pull origin master
+    git --git-dir=~/.cfg --work-tree=~ pull origin master
+    popd
     popd
 }
 

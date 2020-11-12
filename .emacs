@@ -41,8 +41,16 @@
 
 ;; enable use-package
 (eval-when-compile
-  (require 'use-package))
+  (require 'use-package)
+  (require 'flycheck))
 
+;; Tell emacs where is your personal elisp lib dir
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+
+;; load the packaged named xyz.
+(load "hoon-mode") ;; best not to include the ending “.el” or “.elc”
+(add-hook 'hoon-mode-hook
+          (lambda () (electric-indent-local-mode -1)))
 ;; enable paired brackets
 (electric-pair-mode t)
 
@@ -67,11 +75,9 @@
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(custom-safe-themes
-   (quote
-    ("50d2919c1abf557501cf2ce0aaee7464b1aea6c86653d24081aa940e8f9059f1" "aa890cb2304e76bb016bb100945de44e0aa2000dafff5279fe0fca65d45e3e58" "b212cf89712496378a6bce4779935dc8c622869bb3944652e67052496a1ade16" default)))
+   '("50d2919c1abf557501cf2ce0aaee7464b1aea6c86653d24081aa940e8f9059f1" "aa890cb2304e76bb016bb100945de44e0aa2000dafff5279fe0fca65d45e3e58" "b212cf89712496378a6bce4779935dc8c622869bb3944652e67052496a1ade16" default))
  '(package-selected-packages
-   (quote
-    (beacon rainbow-delimiters xkcd find-file-in-project use-package flycheck dumb-jump ivy-explorer hydra ivy company))))
+   '(protobuf-mode maude-mode brainfuck-mode spell-fu ein jupyter yasnippet lsp-mode gnu-elpa-keyring-update rustic cuda-mode yaml-mode undo-tree beacon rainbow-delimiters xkcd find-file-in-project use-package flycheck dumb-jump ivy-explorer hydra ivy company)))
 (load-theme 'wombat t)
 ;; lol this will probably break elsewhere so make sure goodwombat is shipped in the repo
 (load-theme 'goodwombat t)
@@ -109,6 +115,7 @@
 ;; add some file extensions
 (add-to-list 'auto-mode-alist '("\\.cu\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.gdb\\'" . gdb-script-mode))
+(add-to-list 'auto-mode-alist '("\\.cuh\\'" . cuda-mode))
 ;; when in doubt, escape more characters lol
 (add-to-list 'auto-mode-alist '("\\.\\(ba\\|z\\)sh\\(rc\\|_\\(profile\\|aliases\\)\\)\\'" . shell-script-mode))
 
@@ -152,6 +159,22 @@
 
 ;;TODO: add multiple cursors when youre ready
 
+;; I liek line numbers
+(global-linum-mode 1)
+(use-package rustic)
 (provide '.emacs)
 
+;; Enable desktop-save-mode only when the first frame has come up.
+;; This prevents Emacs from stalling when run as a daemon.
+;; (add-hook 'after-make-frame-functions
+;;     (lambda (frame)
+;;         (with-selected-frame frame
+;;             (unless desktop-save-mode
+;;                 ;; http://debbugs.gnu.org/cgi/bugreport.cgi?bug=17693
+;;                 (if (daemonp) (setq desktop-restore-frames nil))
+;;                 (desktop-save-mode 1)
+;;                 (desktop-read)))))
+
 ;;; .emacs ends here
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
