@@ -7,6 +7,7 @@
 [alias]
 	dad = !echo $(curl -s -H \"Accept: text/plain\" https://icanhazdadjoke.com/)
 	stat = status
+	lo = log --oneline --graph
 [merge]
 	conflictstyle = diff3
 

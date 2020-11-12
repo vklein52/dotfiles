@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-# This script is intended to be a monolith script that creates a configuration with various specifications.
-# First, it ensures Python and PIP are installed, and uses PIP to install Ansible.
-# Next, an Ansible playbook is kicked off, targetting localhost, using the package module to install essentials such as emacs and zsh
-# Lastly, it clones the git repo (TODO)
+# This script installs the packages necessary for the system by installing
+# python and pip specifically for each OS which are used to install ansible
+# which is used to install the rest of the packages without needing
+# OS-specific behavior. As well as any other 1-off packages.
 
 function determine-os () {
     UNAME_OUT=`uname -a`
