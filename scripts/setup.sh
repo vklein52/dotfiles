@@ -3,8 +3,8 @@
 function clone-repo () {
     pushd ~
     git init
-    git remote add https://github.com/vklein52/dotfiles.git
-    git pull
+    git remote add origin https://github.com/vklein52/dotfiles.git 
+    git pull origin master
     popd
 }
 
