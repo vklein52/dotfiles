@@ -36,5 +36,9 @@ function run-ansible-playbook () {
     ~/.local/bin/ansible-playbook ansible/site.yaml
 }
 
-# install-python-and-pip
+function install-oh-my-zsh () {
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+}
+
 run-ansible-playbook
+install-oh-my-zsh
