@@ -1,7 +1,7 @@
 # this is git's per-user configuration file.
 [user]
 	name = Vijay Klein
-	email = uytre7907@gmail.com
+	email = vijayklein52@gmail.com
 [core]
 	editor = emacsclient
 [alias]

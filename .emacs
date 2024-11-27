@@ -9,23 +9,20 @@
                           bind-key
                           company
                           counsel
-                          dash
                           dumb-jump
-                          epl
-                          f
                           find-file-in-project
-                          flycheck
-                          haskell-mode
-                          hydra
                           ivy
                           ivy-explorer
-                          popup
                           pkg-info
                           rainbow-delimiters
                           s
                           seq
                           use-package
                           xkcd))
+
+;; allow for comments in terminal mode with C-x /
+(global-set-key "\C-x/" 'comment-line)
+
 
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
@@ -45,12 +42,12 @@
   (require 'flycheck))
 
 ;; Tell emacs where is your personal elisp lib dir
-(add-to-list 'load-path "~/.emacs.d/lisp/")
+;; (add-to-list 'load-path "~/.emacs.d/lisp/")
 
 ;; load the packaged named xyz.
-(load "hoon-mode") ;; best not to include the ending “.el” or “.elc”
-(add-hook 'hoon-mode-hook
-          (lambda () (electric-indent-local-mode -1)))
+;; (load "hoon-mode") ;; best not to include the ending “.el” or “.elc”
+;; (add-hook 'hoon-mode-hook
+;;           (lambda () (electric-indent-local-mode -1)))
 ;; enable paired brackets
 (electric-pair-mode t)
 
@@ -65,25 +62,23 @@
 (setq-default tab-width 4
               indent-tabs-mode nil)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default default default italic underline success warning error])
- '(ansi-color-names-vector
-   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
- '(custom-safe-themes
-   '("50d2919c1abf557501cf2ce0aaee7464b1aea6c86653d24081aa940e8f9059f1" "aa890cb2304e76bb016bb100945de44e0aa2000dafff5279fe0fca65d45e3e58" "b212cf89712496378a6bce4779935dc8c622869bb3944652e67052496a1ade16" default))
- '(package-selected-packages
-   '(protobuf-mode maude-mode brainfuck-mode spell-fu ein jupyter yasnippet lsp-mode gnu-elpa-keyring-update rustic cuda-mode yaml-mode undo-tree beacon rainbow-delimiters xkcd find-file-in-project use-package flycheck dumb-jump ivy-explorer hydra ivy company)))
+;; (custom-set-variables
+;;  ;; custom-set-variables was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(ansi-color-faces-vector
+;;    [default default default italic underline success warning error])
+;;  '(ansi-color-names-vector
+;;    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+;;  '(custom-safe-themes
+;;    '("50d2919c1abf557501cf2ce0aaee7464b1aea6c86653d24081aa940e8f9059f1" "aa890cb2304e76bb016bb100945de44e0aa2000dafff5279fe0fca65d45e3e58" "b212cf89712496378a6bce4779935dc8c622869bb3944652e67052496a1ade16" default))
+;; ;;  '(package-selected-packages
+;; ;;    '(protobuf-mode maude-mode brainfuck-mode spell-fu ein jupyter yasnippet lsp-mode gnu-elpa-keyring-update rustic cuda-mode yaml-mode undo-tree beacon rainbow-delimiters xkcd find-file-in-project use-package flycheck dumb-jump ivy-explorer hydra ivy company)))
 (load-theme 'wombat t)
-;; lol this will probably break elsewhere so make sure goodwombat is shipped in the repo
-(load-theme 'goodwombat t)
+;; Lol this will probably break elsewhere so make sure goodwombat is shipped in the repo
+;; ;; (load-theme 'goodwombat t)
 
-;; allow for comments in terminal mode with C-x /
-(global-set-key "\C-x/" 'comment-line)
 
 ;; company related section
 (add-hook 'after-init-hook 'global-company-mode)
@@ -161,7 +156,7 @@
 
 ;; I liek line numbers
 (global-linum-mode 1)
-(use-package rustic)
+;; (use-package rustic)
 (provide '.emacs)
 
 ;; Enable desktop-save-mode only when the first frame has come up.
